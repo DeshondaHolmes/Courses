@@ -5,36 +5,41 @@ const tbody = document.getElementById("courseDetails");
 window.onload = init;
 
 function init() {
-  showCourses();
+    showCourses();
 }
 
 function showCourses() {
-  console.log("clicked");
+    console.log("clicked");
 
-  let theUrl = "http://localhost:8081/api/courses";
-  fetch(theUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+    let theUrl = "http://localhost:8081/api/courses";
+    fetch(theUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
 
-      for (let i = 0; i < data.length; i++) {
-            let row = tbody.insertRow(-1);
-            let cell1 = row.insertCell();
-            let cell2 = row.insertCell();
-            let cell3 = row.insertCell();
-         
-    
-            cell1.innerHTML = data[i].courseName;
-            cell2.innerHTML = data[i].dept;
-            cell3.innerHTML = data[i].courseNum;
-     
+            for (let i = 0; i < data.length; i++) {
+                debugger
+                let row = tbody.insertRow(-1);
+                let anchor = document.createElement("a");
+                anchor.href = `http://localhost:8081/details.html?courseid=${data[i].id}`;
+                anchor.text = "See details";
+                let cell1 = row.insertCell();
+                let cell2 = row.insertCell();
+                let cell3 = row.insertCell();
+                let cell4 = row.insertCell();
 
-        }
-    });
+
+                cell1.innerHTML = data[i].courseName;
+                cell2.innerHTML = data[i].dept;
+                cell3.innerHTML = data[i].courseNum;
+                cell4.innerHTML = "See details"
+
+            }
+        });
+
+
+
 }
-
-
-
 
 //   let row = table.insertRow(-1);
 //   let cell0 = row.insertCell(0);
