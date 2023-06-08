@@ -5,7 +5,7 @@
 
 
 //tbody element defined by html element id 
-const tbody = document.getElementById("courseDetails");
+const courseCard = document.getElementById("courseCard");
 
 
 
@@ -24,14 +24,14 @@ window.onload = () => {
         id = urlParams.get("courseid")
         console.log(id);
 
-        let courseIdUrl ="http://localhost:8081/api/courses/" + id;
+        let courseIdUrl = "http://localhost:8081/api/courses/" + id;
         fetch(courseIdUrl)
-        .then((response) => response.json())
-        .then(course => {
-            console.log(course);
-            showDetailforCourse(course);
-            
-        });
+            .then((response) => response.json())
+            .then(course => {
+                console.log(course);
+                showDetailforCourseCard(course);
+
+            });
         // Now that you know the course id, make an
         // AJAX call to get that one course
         // and in the callback, display it.
@@ -39,78 +39,113 @@ window.onload = () => {
         // the ajax request by concatenating 
         // "http://localhost:8081pi/courses/" with the id!
     }
-    else{
+    else {
         document.getElementById("error").innerHTML = "Oh no! there's no querystring... you should get to this page through a hyperlink."
     }
 
- //   showCourseDetails();
+      showCourseDetails();
 }
 
-function showDetailforCourse(course){
+function showDetailforCourseCard(course) {
     // fill in html elements to describe the course that was passed in.
+
+
+
+    let divCol = document.createElement("div");
+    divCol.className = "col-6";
+    courseCard.appendChild(divCol);
+
+    let divCard = document.createElement("div");
+    divCard.className = "card";
+    divCol.appendChild(divCard);
+
+
+    let divHeader = document.createElement("div");
+    divHeader.className = "card-header";
+    divHeader.innerHTML = "Course ID: " + course.id;
+    divCard.appendChild(divHeader);
+
+    let unorderedList = document.createElement("ul");
+    unorderedList.className = "list-group list-group-flush";
+    divHeader.appendChild(unorderedList);
+
+    let courseInstructor = document.createElement("li");
+    courseInstructor.className = "list-group-item";
+    courseInstructor.innerHTML= "Instuctor: " + course.instructor;
+    unorderedList.appendChild(courseInstructor);
+
+    let courseStart = document.createElement("li");
+    courseStart.className = "list-group-item";
+    courseStart.innerHTML= "Start Date: " + course.startDate;
+    courseInstructor.appendChild(courseStart);
+
+    let courseDuration = document.createElement("li");
+    courseDuration.className = "list-group-item";
+    courseDuration.innerHTML= "Number of days: " + course.numDays;
+    courseStart.appendChild(courseDuration);
+
 }
 
 //function to show all courses
-function showCourseDetails() {
+// function showCourseDetails() {
 
-    console.log("second console this is show all courses function");
-
-
-    //fetch method , url to get api with courses
-    fetch("http://localhost:8081/api/courses")
-
-        .then((response) => response.json())
-
-        .then((courses) => {
-            console.log(courses);
-
-            //for loop, used to loop through values starting at index
-            for (let i = 0; i < courses.length; i++) {
-
-                //define row to be inside table body for each course
-                let row = tbody.insertRow(-1);
-
-                //method insert new td into table row
-                let cell1 = row.insertCell(0);
-                cell1.className = "text-center px-2";
-                cell1.innerHTML = courses[i].instructor;
-
-                let cell2 = row.insertCell(1);
-                cell2.className = "text-center px-2";
-                cell2.innerHTML = courses[i].startDate;
+//     console.log("second console this is show all courses function");
 
 
-                // let cell3 = row.insertCell(2);
-                // cell3.className = "text-center mx-5";
-                // cell3.innerHTML = courses[i].courseNum + "/";
+//     //fetch method , url to get api with courses
+//     fetch("http://localhost:8081/api/courses")
+
+//         .then((response) => response.json())
+
+//         .then((courses) => {
+//             console.log(courses);
+
+//             //for loop, used to loop through values starting at index
+
+//                 //define row to be inside table body for each course
+//                 let row = tbody.insertRow(-1);
+
+//                 //method insert new td into table row
+//                 let cell1 = row.insertCell(0);
+//                 cell1.className = "text-center px-2";
+//                 cell1.innerHTML = courses[i].instructor;
+
+//                 let cell2 = row.insertCell(1);
+//                 cell2.className = "text-center px-2";
+//                 cell2.innerHTML = courses[i].startDate;
 
 
-                let cell3 = row.insertCell(2);
-                cell3.className = "text-center mx-5";
-                cell3.innerHTML = courses[i].numDays;
+//                 // let cell3 = row.insertCell(2);
+//                 // cell3.className = "text-center mx-5";
+//                 // cell3.innerHTML = courses[i].courseNum + "/";
 
-                // let cell4= row.document.createElement("a");
-                // cell4.className = "text-center mx-5";
-                // cell3.innerHTML = courses[i].courseNum + "/";
 
-                // let anchor = document.createElement("a");
-                // anchor.href = `http://localhost:8081/details.html?courseid=${courses[i].id}`;
-                // anchor.className = "col-6";
-                // anchor.className = "container-fluid";
+//                 let cell3 = row.insertCell(2);
+//                 cell3.className = "text-center mx-5";
+//                 cell3.innerHTML = courses[i].numDays;
 
-                // const coursesLink = document.getElementById("coursesLink");
-                // cell3.appendChild(anchor);
-                // anchor.text = courses[i].courseName;
+//                 // let cell4= row.document.createElement("a");
+//                 // cell4.className = "text-center mx-5";
+//                 // cell3.innerHTML = courses[i].courseNum + "/";
 
+//                 // let anchor = document.createElement("a");
+//                 // anchor.href = `http://localhost:8081/details.html?courseid=${courses[i].id}`;
+//                 // anchor.className = "col-6";
+//                 // anchor.className = "container-fluid";
+
+//                 // const coursesLink = document.getElementById("coursesLink");
+//                 // cell3.appendChild(anchor);
+//                 // anchor.text = courses[i].courseName;
 
 
 
-            }
-        });
+
+//             }
+//         });
 
 
 
-}
+// }
 //   let row = table.insertRow(-1);
 //   let cell0 = row.insertCell(0);
 //   let cell1 = row.insertCell(1);

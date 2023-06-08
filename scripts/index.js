@@ -62,9 +62,9 @@ function buildRowForCourse(course) {
     cell3.className = "text-center mx-3";
     cell3.innerHTML = course.courseNum;
 
-    let cell4 = row.insertCell();
+    let cell4 = row.insertCell(3);
     cell4.className = "text-center mx-3";
-    cell4.innerHTML = "";
+
 
     let anchor = document.createElement("a");
     anchor.href = `details.html?courseid=${course.id}`;
