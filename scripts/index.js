@@ -14,25 +14,38 @@ function showCourses() {
     let theUrl = "http://localhost:8081/api/courses";
     fetch(theUrl)
         .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
+        .then((courses) => {
+            console.log(courses);
 
-            for (let i = 0; i < data.length; i++) {
-                debugger
+            for (let i = 0; i < courses.length; i++) {
+            
                 let row = tbody.insertRow(-1);
-                let anchor = document.createElement("a");
-                anchor.href = `http://localhost:8081/details.html?courseid=${data[i].id}`;
-                anchor.text = "See details";
+
+                
+                
+                
+                
                 let cell1 = row.insertCell();
+                cell1.className = "py-2";
+                cell1.innerHTML = courses[i].courseName;
+                
                 let cell2 = row.insertCell();
+                cell2.className = "py-2";
+                cell2.innerHTML = courses[i].dept;
+                
                 let cell3 = row.insertCell();
-                let cell4 = row.insertCell();
+                cell3.className = "py-2";
+                cell3.innerHTML = courses[i].courseNum;
+                
+                let anchor = document.createElement("a");
+                anchor.href = `http://localhost:8081/details.html?courseid=${courses[i].id}`;
+                // anchor.className = "col-6";
+                anchor.className = "py-2";
+                cell3.appendChild(anchor);
+                anchor.text = courses[i].courseName;
+               
 
 
-                cell1.innerHTML = data[i].courseName;
-                cell2.innerHTML = data[i].dept;
-                cell3.innerHTML = data[i].courseNum;
-                cell4.innerHTML = "See details"
 
             }
         });

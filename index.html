@@ -20,31 +20,35 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="details.html">Course details</a>
+                        </li>
                     </ul>
 
                 </div>
         </nav>
     </header>
     <main>
-        <form class="container col-12">
-            <h1 class="mb-5">Courses</h1>
+        <form class="container" id="coursesFullTable">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Courses</h1>
 
-            <table class="border"id="courseTable">
-                <tr class=" text-center">
-                 
-                    <th>Title</th>
-                    <th>Department</th>
-                    <th>Course number</th>
-                    <th>Link</th>
+                    <table id="courseTable">
+                        <tr>
+                            <th>Title</th>
+                            <th>Department</th>
+                            <th>Course number</th>
+                            <th>Link</th>
+                        </tr>
+                        <tbody id="courseDetails">
 
-                
-                </tr>
-                <tbody id="courseDetails">
-                    
-                </tbody>
-           
-            </table>
+                        </tbody>
 
+                    </table>
+
+                </div>
+            </div>
         </form>
 
     </main>
