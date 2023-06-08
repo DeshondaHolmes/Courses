@@ -8,8 +8,23 @@
 
 } */
 
+tr{
+   display:flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-evenly;  
+   align-content: space-around;
+}
 
-.coursesFullTable{
-    font-size: x-large;
+table{
+   
+    border-right-color: rgb(204, 6, 191);
+    border-bottom-color: rgb(221, 193, 16);
+    border-left-color: rgb(47, 231, 33);
+    border-top-color: purple;
+    border-width: 5px;
+    font-size:medium;
+    border-style: groove;
+    
 
 }

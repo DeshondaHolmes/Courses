@@ -2,6 +2,9 @@
 
 const tbody = document.getElementById("courseDetails");
 
+
+
+
 window.onload = init;
 
 function init() {
@@ -18,32 +21,32 @@ function showCourses() {
             console.log(courses);
 
             for (let i = 0; i < courses.length; i++) {
-            
+
                 let row = tbody.insertRow(-1);
 
-                
-                
-                
-                
-                let cell1 = row.insertCell();
-                cell1.className = "py-2";
+
+                let cell1 = row.insertCell(0);
+                cell1.className = "text-center px-2";
                 cell1.innerHTML = courses[i].courseName;
-                
-                let cell2 = row.insertCell();
-                cell2.className = "py-2";
+
+                let cell2 = row.insertCell(1);
+                cell2.className = "text-center px-2";
+                cell2.innerHTML = courses[i].dept; cell2.className = "text-center px-2";
                 cell2.innerHTML = courses[i].dept;
-                
-                let cell3 = row.insertCell();
-                cell3.className = "py-2";
-                cell3.innerHTML = courses[i].courseNum;
-                
+
+                let cell3 = row.insertCell(2);
+                cell3.className = "text-center mx-5";
+                cell3.innerHTML = courses[i].courseNum + "/";
+
                 let anchor = document.createElement("a");
                 anchor.href = `http://localhost:8081/details.html?courseid=${courses[i].id}`;
                 // anchor.className = "col-6";
-                anchor.className = "py-2";
+                // anchor.className = "container-fluid";
+
+
                 cell3.appendChild(anchor);
                 anchor.text = courses[i].courseName;
-               
+
 
 
 
